@@ -1001,6 +1001,19 @@
         align-items: start;
       }
 
+      .ollama-row {
+        display: grid;
+        grid-template-columns: 1.05fr .95fr;
+        gap: 16px;
+        align-items: start;
+        margin-bottom: 14px;
+      }
+
+      .ollama-row > .catalog-card,
+      .ollama-row > .panel {
+        margin: 0;
+      }
+
       .catalog-card {
         display: grid;
         gap: 14px;
@@ -4204,6 +4217,7 @@
           <a href="#stage-2-catalog">Каталог</a>
           <a href="#stage-2-models">Рейтинг</a>
           <a href="#stage-2-costs">Стоимость</a>
+          <a href="#stage-2-ollama">Единый клиент</a>
           <a href="#stage-2-sanctions">Риски</a>
           <a href="#stage-2-practice">Практика</a>
           <a href="#stage-3">Свободный промт</a>
@@ -4390,6 +4404,7 @@
                   <a class="catalog-link" href="https://modelswitch.io/" target="_blank" rel="noopener">ModelSwitch</a>
                   <a class="catalog-link" href="https://mashagpt.ru/" target="_blank" rel="noopener">MashaGPT</a>
                   <a class="catalog-link" href="https://proxyapi.ru/" target="_blank" rel="noopener">ProxyAPI</a>
+                  <a class="catalog-link" href="https://ollama.com/cloud" target="_blank" rel="noopener">Ollama Cloud + Claude</a>
                 </div>
               </div>
             </div>
@@ -4421,6 +4436,7 @@
             <a class="tool-chip" href="https://opencode.ai/" target="_blank" rel="noopener">Opencode</a>
             <a class="tool-chip" href="https://cursor.com/" target="_blank" rel="noopener">Cursor</a>
             <a class="tool-chip" href="https://platform.openai.com/docs/models" target="_blank" rel="noopener">Codex</a>
+            <a class="tool-chip" href="https://docs.ollama.com/integrations/claude-code" target="_blank" rel="noopener">ollama launch claude</a>
           </div>
         </div>
       </section>
@@ -4586,6 +4602,11 @@
                 <span>Пакетный доступ к qwen3.6-plus, Kimi, GLM, MiniMax для инструментов кодирования.</span>
               </div>
               <div class="cost-row">
+                <strong><a class="model-name-link" href="https://ollama.com/pricing" target="_blank" rel="noopener">Ollama Cloud + Claude</a></strong>
+                <b>$20/мес подписка</b>
+                <span>Облачный Claude Opus / Sonnet / Haiku из клиента Ollama; токены сверх подписки — по тарифам Anthropic.</span>
+              </div>
+              <div class="cost-row">
                 <strong>Внутренний контур</strong>
                 <b>без SaaS-подписки</b>
                 <span>Стоимость сидит в GPU, лимитах, очередях, эксплуатации и правилах доступа.</span>
@@ -4601,6 +4622,109 @@
             <div>
               <strong>Для компании баланс важнее одного тарифа</strong>
               <p>Топовые внешние модели, API-агрегаторы и внутренние модели с открытыми весами надо распределять по задачам, рискам, данным и стоимости контура.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="stage-2-ollama">
+        <div class="slide-head">
+          <div>
+            <p class="eyebrow">Этап 2.5 / Ollama Cloud + Claude</p>
+            <h2>Ollama как единый клиент: локальные модели и Claude в одном окне</h2>
+          </div>
+          <p>
+            Подписка Ollama за $20/мес открывает облачный доступ к Claude Opus, Sonnet
+            и Haiku из того же клиента, где крутятся локальные qwen, llama и gpt-oss.
+            Получаем гибрид: локальный контур для чувствительных данных и топ-качество
+            Claude без отдельной инфраструктуры, VPN и зарубежных карт.
+          </p>
+        </div>
+
+        <div class="ollama-row">
+          <div class="catalog-card external">
+            <span class="tag blue">Ollama Cloud + Claude</span>
+            <h3>Один клиент — два контура</h3>
+            <p>
+              Ollama Desktop запускается локально для open-моделей, а по подписке Ollama
+              Cloud получает доступ к облачным Claude-моделям Anthropic. Переключение —
+              в настройках клиента, без смены IDE и без правки конфигов.
+            </p>
+            <p style="margin-bottom: 14px">
+              <strong>Бесплатный тариф</strong> даёт доступ к облачным open-моделям
+              (qwen, gpt-oss, deepseek и др.) с режимом light usage: 1 облачная
+              модель одновременно, session-лимиты сбрасываются каждые 5 часов,
+              недельные — каждые 7 дней. По
+              <a class="model-name-link" href="https://ollama.com/pricing" target="_blank" rel="noopener">тарифной сетке Ollama</a>
+              Pro за $20/мес увеличивает облачный usage в 50 раз и открывает
+              более мощные модели, включая Claude. Точные квоты в токенах Ollama
+              не публикует — лимиты считаются по реальной нагрузке на GPU.
+            </p>
+            <div class="access-split">
+              <div class="access-box">
+                <strong>Локальный контур</strong>
+                <span>ollama serve поднимает qwen3-coder, qwen3.5 27B, gpt-oss, llama.
+                  Данные и код не покидают ноутбук. Подходит для проприетарного кода,
+                  черновиков и экспериментов.</span>
+                <div class="catalog-links">
+                  <a class="catalog-link" href="https://ollama.com/" target="_blank" rel="noopener">Ollama Desktop</a>
+                  <a class="catalog-link" href="https://ollama.com/library" target="_blank" rel="noopener">Каталог моделей</a>
+                </div>
+              </div>
+              <div class="access-box">
+                <strong>Облачный Claude через Ollama</strong>
+                <span>Anthropic Claude Opus, Sonnet, Haiku по подписке Ollama Cloud.
+                  Тот же API-ключ Ollama, что и в настройках клиента; Anthropic-совмес-
+                  тимый endpoint для Cursor, Cline, Kilo Code.</span>
+                <div class="catalog-links">
+                  <a class="catalog-link" href="https://ollama.com/cloud" target="_blank" rel="noopener">Ollama Cloud</a>
+                  <a class="catalog-link" href="https://ollama.com/pricing" target="_blank" rel="noopener">Тарифы</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <span class="tag amber">что это дает</span>
+            <h3 style="margin-top: 10px">Ключевые факты</h3>
+            <p style="margin-bottom: 14px">
+              Коротко о том, что получает пользователь и где граница. Подробнее
+              и со всеми флагами — в
+              <a class="model-name-link" href="https://docs.ollama.com/integrations/claude-code" target="_blank" rel="noopener">инструкции по запуску Ollama claude</a>
+              и в разделе
+              <a class="model-name-link" href="https://docs.ollama.com/api/anthropic-compatibility" target="_blank" rel="noopener">Anthropic-совместимости Ollama</a>.
+            </p>
+            <div class="cost-table">
+              <div class="cost-row header">
+                <span>параметр</span>
+                <span>значение</span>
+                <span>что это значит</span>
+              </div>
+              <div class="cost-row">
+                <strong>Подписка</strong>
+                <b>$20/мес</b>
+                <span>Ollama Pro / Cloud — стартовый уровень доступа к облачным моделям.</span>
+              </div>
+              <div class="cost-row">
+                <strong>Модели Claude</strong>
+                <b>Opus, Sonnet, Haiku</b>
+                <span>Та же линейка, что и в Anthropic API; тарификация токенов — по тарифам Anthropic.</span>
+              </div>
+              <div class="cost-row">
+                <strong>Локальные модели</strong>
+                <b>qwen, llama, gpt-oss</b>
+                <span>Без подписки и без отправки данных наружу — для приватных задач.</span>
+              </div>
+              <div class="cost-row">
+                <strong>Совместимость</strong>
+                <b>Anthropic-compatible endpoint</b>
+                <span>Ollama отдаёт API в формате Anthropic, поэтому подключается к Cursor, Cline, Kilo Code без отдельной обвязки.</span>
+              </div>
+              <div class="cost-row">
+                <strong>Граница</strong>
+                <b>не корпоративный контур</b>
+                <span>Подписка — личная/командная, не договор с Anthropic. Для энтерпрайза остаются аудит логов, политика данных и юридическая схема.</span>
+              </div>
             </div>
           </div>
         </div>
