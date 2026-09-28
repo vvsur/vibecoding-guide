@@ -982,6 +982,38 @@
         line-height: 1.4;
       }
 
+      .check-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .check-item {
+        display: grid;
+        grid-template-columns: 100px minmax(0, 1fr);
+        gap: 14px;
+        align-items: start;
+        border-top: 1px solid var(--border);
+        padding-top: 12px;
+      }
+
+      .check-item:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .check-item .tag {
+        margin-top: 4px;
+      }
+
+      .check-item strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .check-item p {
+        margin: 0;
+      }
+
       #stage-2 .button-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
